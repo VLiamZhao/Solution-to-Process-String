@@ -4,15 +4,15 @@ public class ProcessString {
             return input;
         }
         char[] arr = input.toCharArray();
-        Map<Charactor, Integer> map = turnToMap(arr);
-        Map<Charactor, Integer> mapUpperAndLower = ULMap(arr);
-        List<Entry<Charactor, Integer>> list = new ArrayList<>();
-        for (Entry<Charactor, Integer> e : map){
+        Map<Character, Integer> map = turnToMap(arr);
+        Map<Character, Integer> mapUpperAndLower = ULMap(arr);
+        List<Map.Entry<Character, Integer>> list = new ArrayList<>();
+        for (Map.Entry<Character, Integer> e : map.entrySet()){
             list.add(e);
         }
-        Collections.sort(list, new Comparator<Entry<Charactor, Integer>>(){
+        Collections.sort(list, new Comparator<Map.Entry<Character, Integer>>(){
             @Override
-            public int compare(Entry<Charactor, Integer> e1, Entry<Charactor, Integer> e2){
+            public int compare(Map.Entry<Character, Integer> e1, Map.Entry<Character, Integer> e2){
                 if (e1.getValue() == e2.getValue()){
                     return 0;
                 }
@@ -21,26 +21,26 @@ public class ProcessString {
         });
         StringBuilder sb = new StringBuilder();
         for(int i = 0; i < list.size(); i++){
-            Charactor c = list.get(i).getKey();
-            int upper = mapUpperAndLower.get(c.toUpperCase()) == null ? 0 : mapUpperAndLower.get(c.toUpperCase());
-            int lower = mapUpperAndLower.get(c.toLowerCase()) == null ? 0 : mapUpperAndLower.get(c.toLowerCase());
+            Character c = list.get(i).getKey();
+            int upper = mapUpperAndLower.get(Character.toUpperCase(c)) == null ? 0 : mapUpperAndLower.get(Character.toUpperCase(c));
+            int lower = mapUpperAndLower.get(Character.toLowerCase(c)) == null ? 0 : mapUpperAndLower.get(Character.toLowerCase(c));
             while (upper != 0){
-                sb.append(c.toUpperCase());
+                sb.append(Character.toUpperCase(c));
                 upper--;
             }
             while (lower != 0){
-                sb.append(c.toLowerCase());
+                sb.append(Character.toLowerCase(c));
                 lower--;
             }
         }
         return sb.toString();
 
     }
-    private Map<Charactor, Integer> turnToMap(char[] arr){
-        Map<Charactor, Integer> map = new HashMap<>();
-        for (int i = 0; i < arr.length; i++>){
-            Charactor temp = arr[i].toLowerCase;
-            if (map.containsKey(temp) {
+    private Map<Character, Integer> turnToMap(char[] arr){
+        Map<Character, Integer> map = new HashMap<>();
+        for (int i = 0; i < arr.length; i++){
+            Character temp = Character.toLowerCase(arr[i]);
+            if (map.containsKey(temp)) {
                 map.put(temp, map.get(temp) + 1);
             }else {
                 map.put(temp, 1);
@@ -48,15 +48,15 @@ public class ProcessString {
         }
         return map;
     }
-    private Map<Charactor, Integer> ULMap(char[] arr){
-            Map<Charactor, Integer> map = new HashMap<>();
-            for (int i = 0; i < arr.length; i++>){
-                if (map.containsKey(arr[i]) {
-                    map.put(temp, map.get(arr[i]) + 1);
-                }else {
-                    map.put(arr[i], 1);
-                }
+    private Map<Character, Integer> ULMap(char[] arr){
+        Map<Character, Integer> map = new HashMap<>();
+        for (int i = 0; i < arr.length; i++){
+            if (map.containsKey(arr[i])) {
+                map.put(arr[i], map.get(arr[i]) + 1);
+            }else {
+                map.put(arr[i], 1);
             }
-            return map;
         }
+        return map;
+    }
 }
