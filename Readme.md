@@ -5,6 +5,7 @@ Programming Language: Java <br />
 Input: input String<br />
 Output: Processed String<br />
 High-level description: My method is to use map to record the number of every distinct charactor.<br />
-One map is to record the total number of uppercase and lowercase. Another is to record uppercase and lowercase charactors separately.<br />
-Then, I sort a list of the Entry of the first map to find the expected order of each charactor in output.<br />
-Finally, I use a StringBuilder to build the charactors into a String. <br />
+I also record the maximum number of numbers in all Chracters.<br />
+Then, I use a for loop to collect the characters. In each
+iteration, I collect a certain number of appearence of characters.<br />
+Simutanously, I use a StringBuilder to build the charactors into a String. <br />
