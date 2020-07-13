@@ -1,5 +1,8 @@
 public class ProcessString {
     public String processString(String input){
+        if(input == null || input.length() <= 1){
+            return input;
+        }
         char[] arr = input.toCharArray();
         Map<Charactor, Integer> map = turnToMap(arr);
         Map<Charactor, Integer> mapUpperAndLower = ULMap(arr);
